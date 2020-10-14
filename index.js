@@ -20,8 +20,10 @@ const questions = [
     //     name: "install"
     // },
     {
+        type: "list", 
         message: "Which License would you like to use",
-        name: "licenseType"
+        name: "licenseType",
+        choices: ["GNU AGPLv3", "GNU GPLv3", "GNU LGPLv3", "Mozilla Public Licence 2.0", "MIT License", "Boost Software License 1.0", "The Unlicense"]
     },
     // {
     //     message:"Do you have any contributors?",
