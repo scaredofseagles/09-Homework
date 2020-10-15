@@ -24,7 +24,7 @@ const questions = [
         name: "codeSnippet"
     },
     {
-        message: "Give your code snipper a title",
+        message: "Give your code snippet a title",
         name: "codeSnippetTitle"
     },   
     {
