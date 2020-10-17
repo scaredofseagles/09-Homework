@@ -4,6 +4,14 @@ const inquirer = require('inquirer')
 // array of questions for user
 const questions = [
     {
+        message: "What is your Github username?",
+        name: "userName"
+    },
+    {
+        message: "What is your email address?",
+        name: "email"
+    },
+    {
         message:"What is the title of your project?",
         name: "projectTitle"
     },
@@ -33,29 +41,20 @@ const questions = [
         name: "licenseType",
         choices: ["GNU AGPLv3", "GNU GPLv3", "GNU LGPLv3", "Mozilla Public Licence 2.0", "MIT License", "Boost Software License 1.0", "The Unlicense"]
     },
-    // {
-    //     message:"Do you have any contributors?",
-    //     name: "teamMembers"
-    // },
-    // {
-    //     message: "Provide the tests conducted: ",
-    //     name: "tests"
-    // },
     {
         message: "Provide the source for a screenshot of the product: ",
         name: "imgSource"
     }
 ];
 
-// function to write README file
-function writeToFile(fileName, data) {
-}
 
 let techList = []
 
 // function to initialize program
 async function init() {
     const projectSetup = await inquirer.prompt(questions)
+    const gitHub = "https://github.com/"
+    let licenseName = projectSetup.licenseType.replace(/\s/g, '');
     
     for (var i=0; i<projectSetup.tech; i++){
         const techInfo = await inquirer.prompt({
@@ -68,8 +67,18 @@ async function init() {
     fs.writeFileSync('sample.md', 
     `# ${projectSetup.projectTitle}
 
+![Image](https://img.shields.io/static/v1?label=license&message=${licenseName}&color=green)
+
 ## Description
 ${projectSetup.projectDesc}
+
+## Table of Contents
+* Installation
+* Technologies
+* Code Snippet
+* Usage
+* Questions
+* License
 
 ## Installation
     ${projectSetup.install}
@@ -91,6 +100,10 @@ ${projectSetup.projectDesc}
 ## Usage
 The following image is an example of the web application's appearance and functionality: 
 ![Image](${projectSetup.imgSource})
+
+## Questions
+* ${projectSetup.email}
+* [${projectSetup.userName}](${gitHub}${projectSetup.userName})
 
 ## License
 ${projectSetup.licenseType}
