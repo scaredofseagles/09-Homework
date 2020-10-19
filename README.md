@@ -26,12 +26,32 @@ npm install inquirer
 
 The following animated gif is an example of the application's appearance and functionality: 
 
-![ReadMe-Generator-demo](utils/ReadMe-Generator-demo.gif)
+![ReadMe-Generator-demo](ReadME-Generator-demo.gif)
 
 See the end result: [sample.md](./sample.md)
 
 ## What I Did
 
+#### Prompt User
+
+````
+async function init() {
+    const questions = [
+    {
+        message: "What is your Github username?",
+        name: "userName"
+    }]
+    const projectSetup = await inquirer.prompt(questions)
+}
+````
+
+#### Write to File
+
+````
+fs.writeFileSync('sample.md', `# ${projectSetup.projectTitle}`)
+const checkOutput = fs.readFileSync('sample.md', 'utf8')
+console.log('The final sample.md: ', checkOutput)
+````
 
 
 ## License
