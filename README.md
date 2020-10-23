@@ -26,7 +26,9 @@ npm install inquirer
 
 The following animated gif is an example of the application's appearance and functionality: 
 
-![ReadMe-Generator-demo](ReadME-Generator-demo.gif)
+![ReadMe-Generator-demo](Assets/ReadME-Generator-demo.gif)
+
+![Image](Assets/readme-generator-screenshot.png)
 
 See the end result: [sample.md](./sample.md)
 
